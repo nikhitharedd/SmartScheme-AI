@@ -115,9 +115,7 @@ def format_currency(amount: float, lang: str = "en") -> str:
 
 
 def format_number(number: float, lang: str = "en") -> str:
-    info = _LOCALE_INFO.get(lang, _LOCALE_INFO["en"])
     return f"{number:,}"
-
 
 def format_date(date_str: str, lang: str = "en") -> str:
     info = _LOCALE_INFO.get(lang, _LOCALE_INFO["en"])

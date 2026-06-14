@@ -1,0 +1,1 @@
+# SmartScheme AI Feature Spec

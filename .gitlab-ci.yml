@@ -1,0 +1,20 @@
+stages:
+  - test
+
+lint:
+  stage: test
+  script:
+    - pip install ruff
+    - ruff check .
+
+typecheck:
+  stage: test
+  script:
+    - pip install mypy
+    - mypy .
+
+audit:
+  stage: test
+  script:
+    - pip install pip-audit
+    - pip-audit

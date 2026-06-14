@@ -1,7 +1,6 @@
-import os
 import re
-from datetime import date
 from typing import Any
+import streamlit as st
 
 _INDIAN_STATES: list[str] = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -36,7 +35,6 @@ _APP_VERSION = "1.0.0"
 _SANITIZE_PATTERN = re.compile(r"[<>\{\}\[\]\\;'\"]")
 
 
-import streamlit as st
 
 def setup_session_state() -> None:
     default_state: dict[str, Any] = {
@@ -104,9 +102,9 @@ def generate_scheme_card(scheme: dict[str, Any], lang: str = "en") -> str:
         f"### {title}",
         f"**Category:** {category}  ",
         f"**Ministry:** {ministry}  ",
-        f"",
+        "",
         f"{desc_truncated}",
-        f"",
+        "",
     ]
 
     return "\n".join(lines)

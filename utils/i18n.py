@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 from threading import Lock
 
@@ -7,7 +6,7 @@ from threading import Lock
 class I18nManager:
     _instance = None
     _lock = Lock()
-
+    _initialized: bool = False
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             with cls._lock:

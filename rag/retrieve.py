@@ -99,7 +99,6 @@ class Retriever:
         self, query: str, criteria: dict[str, Any], k: int = 5
     ) -> list[dict[str, Any]]:
         try:
-            chroma_filter = self._build_metadata_filter(criteria)
             return self.vectorstore.search(query, k=k)
         except Exception:
             logger.exception(

@@ -1,6 +1,5 @@
 import json
 import logging
-import os
 from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
@@ -410,7 +409,6 @@ class SchemeEngine:
             else:
                 status = "not_eligible"
 
-            passed_criteria = [k for k, v in details.items() if v.get("status") == "passed"]
             failed_criteria = [k for k, v in details.items() if v.get("status") == "failed"]
             if status == "eligible":
                 reasoning = "All eligibility criteria are satisfied."
@@ -555,10 +553,10 @@ class SchemeEngine:
         guidance = scheme.get("submission_guidance", "")
         if not guidance:
             guidance = (
-                f"Please submit the required documents to the concerned "
-                f"department as per the application process. "
-                f"For further assistance, visit the official website or "
-                f"contact the designated helpdesk."
+                "Please submit the required documents to the concerned "
+                "department as per the application process. "
+                "For further assistance, visit the official website or "
+                "contact the designated helpdesk."
             )
 
         return {
