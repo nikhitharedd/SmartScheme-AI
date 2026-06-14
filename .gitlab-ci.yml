@@ -1,20 +1,23 @@
 stages:
   - test
 
-lint:
+secret_scan:
+  image: zricethezav/gitleaks:latest
   stage: test
   script:
-    - pip install ruff
-    - ruff check .
+    - gitleaks detect --source . --verbose
 
-typecheck:
-  stage: test
-  script:
-    - pip install mypy
-    - mypy .
-
-audit:
+dependency_audit:
+  image: python:3.11
   stage: test
   script:
     - pip install pip-audit
     - pip-audit
+
+tests:
+  image: python:3.11
+  stage: test
+  script:
+    - pip install -r requirements.txt
+    - pip install pytest pytest-cov
+    - pytest --cov=.
